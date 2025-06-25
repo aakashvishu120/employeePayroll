@@ -26,44 +26,44 @@
 
     <div class="bg-body-secondary container-fluid py-4">
         <div class="container bg-white rounded-2 py-4 px-5">
-            <form class="px-5">
+            <form class="px-5" id="payroll-form">
                 <h5 class="my-3 pb-3 fw-bold">Employee Payroll Form</h5>
-                <div class="row mb-3">
+                <div class="row mb-4">
                     <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="inputName">
                     </div>
                 </div>
 
-                <fieldset class="mb-3">
+                <fieldset class="mb-4">
                     <label for="inputName" class="col-sm-2 col-form-label">Profile Image</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                            value="image1">
+                        <input class="form-check-input" type="radio" name="profileImageOptions" id="inlineRadio1"
+                            value="face1.jpg">
                         <label class="form-check-label" for="inlineRadio1"><img class="radio-btn-img"
                                 src="../Assets/face1.jpg" alt=""></label>
                     </div>
                     <div class="form-check form-check-inline mx-4">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                            value="image2">
+                        <input class="form-check-input" type="radio" name="profileImageOptions" id="inlineRadio2"
+                            value="face2.jpg">
                         <label class="form-check-label" for="inlineRadio2"> <img class="radio-btn-img"
                                 src="../Assets/face2.jpg" alt=""> </label>
                     </div>
                     <div class="form-check form-check-inline mx-4">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
-                            value="image3">
+                        <input class="form-check-input" type="radio" name="profileImageOptions" id="inlineRadio3"
+                            value="face3.jpg">
                         <label class="form-check-label" for="inlineRadio3"><img class="radio-btn-img"
                                 src="../Assets/face3.jpg" alt=""></label>
                     </div>
                     <div class="form-check form-check-inline mx-4">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
-                            value="image4">
+                        <input class="form-check-input" type="radio" name="profileImageOptions" id="inlineRadio4"
+                            value="face4.webp">
                         <label class="form-check-label" for="inlineRadio4"><img class="radio-btn-img"
                                 src="../Assets/face4.webp" alt=""></label>
                     </div>
                 </fieldset>
 
-                <fieldset class="mb-3">
+                <fieldset class="mb-4">
                     <label for="inputName" class="col-sm-2 col-form-label">Gender</label>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="genderRadioOptions" id="genderRadio1"
@@ -77,35 +77,40 @@
                     </div>
                 </fieldset>
 
-                <div class="mb-3">
+                <div class="mb-4">
                     <label for="inputName" class="col-sm-2 col-form-label">Department</label>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="hr">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="departmentOptions"
+                            value="hr">
                         <label class="form-check-label" for="inlineCheckbox1">HR</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="sales">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="departmentOptions"
+                            value="sales">
                         <label class="form-check-label" for="inlineCheckbox2">Sales</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="finance">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="departmentOptions"
+                            value="finance">
                         <label class="form-check-label" for="inlineCheckbox3">Finance</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="engineers">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="departmentOptions"
+                            value="engineers">
                         <label class="form-check-label" for="inlineCheckbox3">Engineers</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="others">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="departmentOptions"
+                            value="others">
                         <label class="form-check-label" for="inlineCheckbox3">Others</label>
                     </div>
                 </div>
 
-                <div class="row mb-3 align-items-center">
+                <div class="row mb-4 align-items-center">
                     <label for="salaryRange" class="col-sm-2 col-form-label">Salary</label>
                     <div class="col-sm-4">
                         <select id="salaryRange" class="form-select">
-                            <option selected disabled>Select salary range</option>
+                            <option value="">Select salary range</option>
                             <option value="salary1">0 - 50000</option>
                             <option value="salary2">50000 - 100000</option>
                             <option value=">salary3">&gt; 100000</option>
@@ -114,13 +119,13 @@
                 </div>
 
 
-                <div class="row mb-3 align-items-center">
+                <div class="row mb-4 align-items-center">
                     <label for="startDate" class="col-sm-2 col-form-label">Start Date</label>
                     <div class="col-sm-10">
                         <div class="d-flex gap-2">
                             <!-- Day Dropdown -->
                             <select class="form-select w-auto" id="day">
-                                <option selected disabled>Day</option>
+                                <option value="">Day</option>
                                 <!-- Days 1 to 31 -->
                                 <script>
                                     for (let i = 1; i <= 31; i++) {
@@ -131,7 +136,7 @@
 
                             <!-- Month Dropdown -->
                             <select class="form-select w-auto" id="month">
-                                <option selected disabled>Month</option>
+                                <option value="">Month</option>
                                 <option value="1">January</option>
                                 <option value="2">February</option>
                                 <option value="3">March</option>
@@ -148,7 +153,7 @@
 
                             <!-- Year Dropdown -->
                             <select class="form-select w-auto" id="year">
-                                <option selected disabled>Year</option>
+                                <option value="">Year</option>
                                 <!-- Years 1980 to current -->
                                 <script>
                                     for (let y = new Date().getFullYear(); y >= 1980; y--) {
@@ -161,25 +166,26 @@
                 </div>
 
 
-                <div class="row mb-3">
+                <div class="row mb-4">
                     <label for="inputnotes" class="col-sm-2 col-form-label">Notes</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="Textarea1" rows="3"></textarea>
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between mt-5">
                     <div class="d-inline-block">
-                        <button type="submit" class="btn btn-secondary px-5">Cancel</button>
+                        <button type="button" class="btn btn-secondary px-5" onclick="goToHomePage()">Cancel</button>
                     </div>
                     <div class="d-inline-block">
-                            <button type="submit" class="btn btn-secondary px-5">Submit</button>
-                            <button type="submit" class="btn btn-secondary px-5">Reset</button>
+                        <button type="submit" class="btn btn-secondary px-5 me-5">Submit</button>
+                        <button type="button" class="btn btn-secondary px-5" onclick="resetForm()">Reset</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-<script src="../Scripts/payrollForm.js"></script>
+    <script src="../Scripts/payrollForm.js"></script>
 </body>
+
 </html>
