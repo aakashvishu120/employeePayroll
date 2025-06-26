@@ -196,7 +196,6 @@ $(document).on('click', '.delete-user', function () {
       type: 'DELETE',
       success: function () {
         console.log(`User with ID ${userId} deleted successfully`);
-        $row.remove();
       },
       error: function (err) {
         console.error("Error deleting user:", err);
