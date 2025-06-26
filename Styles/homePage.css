@@ -23,6 +23,10 @@
     align-items: center;
 }
 
+.table-cell.name{
+    flex:2;
+}
+
 .table-cell.name img {
     width: 40px;
     height: 40px;

@@ -81,10 +81,10 @@
 //   localStorage.setItem("userList", JSON.stringify(existingData));
 // }
 
-// // Navigation and form reset helpers
-// function goToHomePage() {
-//   window.location.href = "homePage.html";
-// }
+// Navigation and form reset helpers
+function goToHomePage() {
+  window.location.href = "homePage.html";
+}
 
 // function resetForm() {
 //   document.getElementById("payroll-form").reset();
@@ -155,7 +155,9 @@ function validateFormDataJquery() {
     gender,
     departments,
     salaryRange,
-    startDate: `${day}-${month}-${year}`,
+    day,
+    month,
+    year,
     notes
   };
 }

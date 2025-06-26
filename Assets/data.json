@@ -1,22 +1,9 @@
 {
   "employees": [
     {
-      "id": "6779",
-      "name": "Rohan",
-      "profileImage": "face1.jpg",
-      "gender": "female",
-      "departments": [
-        "sales",
-        "finance"
-      ],
-      "salaryRange": "40000",
-      "startDate": "15-9-1982",
-      "notes": "Javascript is a synchronous, single threaded Language"
-    },
-    {
-      "id": "3f77",
-      "name": "aditi",
-      "profileImage": "face1.jpg",
+      "id": "2e6d",
+      "name": "aakash",
+      "profileImage": "face2.jpg",
       "gender": "male",
       "departments": [
         "hr",
@@ -25,9 +12,26 @@
         "engineers",
         "others"
       ],
-      "salaryRange": "50000",
-      "startDate": "16-11-1994",
-      "notes": "Node is a runtime"
+      "salaryRange": "20000",
+      "day": "19",
+      "month": "10",
+      "year": "2006",
+      "notes": "javascript is a synchronous single threaded language"
+    },
+    {
+      "id": "45e8",
+      "name": "jeff bezos",
+      "profileImage": "face1.jpg",
+      "gender": "male",
+      "departments": [
+        "hr",
+        "sales"
+      ],
+      "salaryRange": "40000",
+      "day": "19",
+      "month": "12",
+      "year": "2008",
+      "notes": "this is sample text"
     }
   ]
 }
