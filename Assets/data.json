@@ -32,6 +32,22 @@
       "month": "12",
       "year": "2008",
       "notes": "this is sample text"
+    },
+    {
+      "id": "1e6b",
+      "name": "anubhav",
+      "profileImage": "face1.jpg",
+      "gender": "male",
+      "departments": [
+        "hr",
+        "sales",
+        "finance"
+      ],
+      "salaryRange": "10000",
+      "day": "21",
+      "month": "11",
+      "year": "2010",
+      "notes": "sample etxt"
     }
   ]
 }

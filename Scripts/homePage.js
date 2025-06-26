@@ -1,5 +1,5 @@
 function goToPayrollFormPage() {
-    window.location.href = "payrollForm.html";
+  window.location.href = "payrollForm.html";
 }
 
 // window.addEventListener('load', function () {
@@ -106,11 +106,11 @@ function goToPayrollFormPage() {
 
 //Jquery Code : ------------
 $(document).ready(function () {
-   getStoredUsers(); //it cannot return data because it uses async js(AJAX) fetching data may take time
+  getStoredUsers(); //it cannot return data because it uses async js(AJAX) fetching data may take time
 });
 
-function getStoredUsers(){
-    $.ajax({
+function getStoredUsers() {
+  $.ajax({
     url: 'http://localhost:3000/employees',
     type: 'GET',
     contentType: 'application/json',
@@ -125,72 +125,82 @@ function getStoredUsers(){
 }
 
 
-function displayUsers(storedUsers){
-    console.log("stored User = ", storedUsers);
-    if(storedUsers.length === 0) return null;
-    storedUsers.forEach(user => listSingleUser(user));
+function displayUsers(storedUsers) {
+  console.log("stored User = ", storedUsers);
+  if (storedUsers.length === 0) return null;
+  storedUsers.forEach(user => listSingleUser(user));
 }
 
-function listSingleUser(user){
-    console.log("display single user = ", user);
+function listSingleUser(user) {
+  console.log("display single user = ", user);
 
-    let tableRow = $('<div>').addClass('table-row');
+  //creating a table row for each entry
+  let tableRow = $('<div>').addClass('table-row');
 
-    //parent div of name+img 
-    let nameImg = $('<div>').addClass('table-cell name');
+  //parent div of name+img 
+  let nameImg = $('<div>').addClass('table-cell name');
 
-    //creating an image tag
-    let img = $('<img>').attr({
-        src: `../Assets/${user.profileImage}`,
-        alt: 'Avatar',
-    }).addClass('face');
-    nameImg.append(img);
+  //creating an image tag
+  let img = $('<img>').attr({
+    src: `../Assets/${user.profileImage}`,
+    alt: 'Avatar',
+  }).addClass('face');
+  nameImg.append(img);
 
-    //creating an span tag for name
-    var finalName = user.name[0].toUpperCase() + user.name.slice(1);
-    let span = $('<span>').text(finalName);
-    nameImg.append(span);
-    tableRow.append(nameImg);
+  //creating an span tag for name
+  var finalName = user.name[0].toUpperCase() + user.name.slice(1);
+  let span = $('<span>').text(finalName);
+  nameImg.append(span);
+  tableRow.append(nameImg);
 
-    //creating a div for gender
-    var finalGender = user.gender[0].toUpperCase() + user.gender.slice(1);
-    let gender = $('<div>').addClass('table-cell').text(finalGender);
-    tableRow.append(gender);
+  //creating a div for gender
+  var finalGender = user.gender[0].toUpperCase() + user.gender.slice(1);
+  let gender = $('<div>').addClass('table-cell').text(finalGender);
+  tableRow.append(gender);
 
-    //creating a div for department
-    let department = $('<div>').addClass('table-cell department-cell');
-    user.departments.forEach(item =>{
-        let span = $('<span>').addClass('px-2 py-1 m-1 rounded-4 department-color').text(item);
-        department.append(span);
-    })
-    tableRow.append(department);
+  //creating a div for department
+  let department = $('<div>').addClass('table-cell department-cell');
+  user.departments.forEach(item => {
+    let span = $('<span>').addClass('px-2 py-1 m-1 rounded-4 department-color').text(item);
+    department.append(span);
+  })
+  tableRow.append(department);
 
-    //creating a div for salary
-    let salary = $('<div>').addClass('table-cell').text(user.salaryRange);
-    tableRow.append(salary);
+  //creating a div for salary
+  let salary = $('<div>').addClass('table-cell').text(user.salaryRange);
+  tableRow.append(salary);
 
-    //creating a div for startDate
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
-    let startDate = $('<div>').addClass('table-cell').text(`${user.day} ${months[user.month-1]} ${user.year}`);
-    tableRow.append(startDate);
+  //creating a div for startDate
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+  let startDate = $('<div>').addClass('table-cell').text(`${user.day} ${months[user.month - 1]} ${user.year}`);
+  tableRow.append(startDate);
 
-    let editdelbuttons = $('<div>').addClass('table-cell text-end action-icons');
-    let deletebtn = $('<i>').addClass('bi bi-trash text-danger');
-    let editbtn = $('<i>').addClass('bi bi-pencil text-primary');
-    editdelbuttons.append(deletebtn);
-    editdelbuttons.append(editbtn);
-    tableRow.append(editdelbuttons);
+  let editdelbuttons = $('<div>').addClass('table-cell text-end action-icons');
+  let deletebtn = $('<i>').addClass('bi bi-trash text-danger fs-3 mx-2 delete-user').attr('data-id', user.id);
+  let editbtn = $('<i>').addClass('bi bi-pencil text-primary fs-3 mx-2 edit-user').attr('data-id', user.id);
+  editdelbuttons.append(deletebtn);
+  editdelbuttons.append(editbtn);
+  tableRow.append(editdelbuttons);
 
-
-
-
-
-
-
-
-
-
-    $('.table-body').append(tableRow);
-
-
+  $('.table-body').append(tableRow);
 }
+
+
+$(document).on('click', '.delete-user', function () {
+  var userId = $(this).attr('data-id');
+  console.log("userId=>", userId);
+
+  if (confirm("Are you sure you want to delete this user?")) {
+    $.ajax({
+      url: `http://localhost:3000/employees/${userId}`,
+      type: 'DELETE',
+      success: function () {
+        console.log(`User with ID ${userId} deleted successfully`);
+        $row.remove();
+      },
+      error: function (err) {
+        console.error("Error deleting user:", err);
+      }
+    });
+  }
+})
