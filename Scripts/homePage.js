@@ -58,7 +58,7 @@ function displayUsers(user) {
     user.departvalues.forEach(item => {
         const spanElement = document.createElement('span');
         spanElement.textContent = item;
-        spanElement.classList.add("px-2", "py-1", "mx-1", "rounded-4", "department-color");
+        spanElement.classList.add("px-2", "py-1", "m-1", "rounded-4", "department-color");
         department.appendChild(spanElement);
     });
     tableRow.appendChild(department);

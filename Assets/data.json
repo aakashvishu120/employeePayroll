@@ -1,0 +1,33 @@
+{
+  "employees": [
+    {
+      "id": "6779",
+      "name": "Rohan",
+      "profileImage": "face1.jpg",
+      "gender": "female",
+      "departments": [
+        "sales",
+        "finance"
+      ],
+      "salaryRange": "40000",
+      "startDate": "15-9-1982",
+      "notes": "Javascript is a synchronous, single threaded Language"
+    },
+    {
+      "id": "3f77",
+      "name": "aditi",
+      "profileImage": "face1.jpg",
+      "gender": "male",
+      "departments": [
+        "hr",
+        "sales",
+        "finance",
+        "engineers",
+        "others"
+      ],
+      "salaryRange": "50000",
+      "startDate": "16-11-1994",
+      "notes": "Node is a runtime"
+    }
+  ]
+}

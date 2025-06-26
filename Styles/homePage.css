@@ -65,3 +65,9 @@
     color: white;
     border-width: 5px;
 }
+
+.department-cell{
+    flex-wrap : wrap;
+    flex-grow : 2;
+    margin : 5px 2px;
+}
