@@ -105,8 +105,53 @@ function goToPayrollFormPage() {
 
 
 //Jquery Code : ------------
+//All jQuery-based code that interacts with DOM elements should be wrapped inside $(document).ready(...) to ensure the DOM is fully loaded before executing the scripts.
 $(document).ready(function () {
   getStoredUsers(); //it cannot return data because it uses async js(AJAX) fetching data may take time
+
+  //delete user
+  $(document).on('click', '.delete-user', function () {
+    var userId = $(this).attr('data-id');
+
+    if (confirm("Are you sure you want to delete this user?")) {
+      $.ajax({
+        url: `http://localhost:3000/employees/${userId}`,
+        type: 'DELETE',
+        success: function () {
+          console.log(`User with ID ${userId} deleted successfully`);
+        },
+        error: function (err) {
+          console.error("Error deleting user:", err);
+        }
+      });
+    }
+  })
+
+
+  //edit user
+  $(document).on('click', '.edit-user', function () {
+    var userId = $(this).attr('data-id');
+    window.location.href = `payrollForm.html?id=${userId}`;
+  })
+
+
+  $('#search-box').on('input', function () {
+    const query = $(this).val().trim().toLowerCase();
+    $('.table-row').each(function () {
+      const name = $(this).find('.name span').text().toLowerCase();
+      if (name.includes(query)) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+  });
+
+
+  $("#search-button").on('click', function () {
+    $("#search-box-container").toggle(1000, "swing");
+  })
+
 });
 
 function getStoredUsers() {
@@ -131,7 +176,6 @@ function displayUsers(storedUsers) {
 }
 
 function listSingleUser(user) {
-
   //creating a table row for each entry
   let tableRow = $('<div>').addClass('table-row');
 
@@ -183,28 +227,6 @@ function listSingleUser(user) {
   $('.table-body').append(tableRow);
 }
 
-
-$(document).on('click', '.delete-user', function () {
-  var userId = $(this).attr('data-id');
-
-  if (confirm("Are you sure you want to delete this user?")) {
-    $.ajax({
-      url: `http://localhost:3000/employees/${userId}`,
-      type: 'DELETE',
-      success: function () {
-        console.log(`User with ID ${userId} deleted successfully`);
-      },
-      error: function (err) {
-        console.error("Error deleting user:", err);
-      }
-    });
-  }
-})
-
-$(document).on('click', '.edit-user', function () {
-  var userId = $(this).attr('data-id');
-  window.location.href = `payrollForm.html?id=${userId}`;
-})
 
 function getQueryParam(param) {
   const urlParams = new URLSearchParams(window.location.search);

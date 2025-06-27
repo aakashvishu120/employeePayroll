@@ -23,8 +23,8 @@
     align-items: center;
 }
 
-.table-cell.name{
-    flex:2;
+.table-cell.name {
+    flex: 2;
 }
 
 .table-cell.name img {
@@ -55,7 +55,7 @@
     background-color: #82a70c;
 }
 
-.light-green-font{
+.light-green-font {
     color: #82a70c;
 }
 
@@ -70,8 +70,20 @@
     border-width: 5px;
 }
 
-.department-cell{
-    flex-wrap : wrap;
-    flex-grow : 2;
-    margin : 5px 2px;
+.department-cell {
+    flex-wrap: wrap;
+    flex-grow: 2;
+    margin: 5px 2px;
+}
+
+#search-box {
+    flex: 1;
+    background: transparent;
+    font-weight: 14px;
+    outline: none;
+    padding: 5px 20px;
+    border: 1px solid whitesmoke;
+    border-radius: 50px;
+    background-color: white;
+    min-width: 20vw;
 }
