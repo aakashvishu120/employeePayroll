@@ -94,15 +94,59 @@ function goToHomePage() {
 //JQUERY Code : --------------------------
 
 $(document).ready(function () {
+  const userId = getQueryParam('id'); // check if we're in edit mode
+
+  //if userId is found then prefill form and update user else add user
+  if (userId) {
+    // Change Submit button text to "Update"
+    $('#payroll-form button[type="submit"]').text("Update").addClass("btn btn-warning");
+
+    // Fetch user data and prefill form
+    $.ajax({
+      url: `http://localhost:3000/employees/${userId}`,
+      type: 'GET',
+      success: function (user) {
+        prefillForm(user);
+      },
+      error: function () {
+        alert("User not found!");
+      }
+    });
+  }
+
   $('#payroll-form').submit(function (e) {
     e.preventDefault(); // prevent actual submission
     const formData = validateFormDataJquery();
     if (!formData) return;
-    saveToJson(formData);
+
+    // Update user
+    if (userId) {
+      updateUser(userId, formData);
+    } else {
+      // Add new user
+      saveToJson(formData);
+    }
 
     //reset the form fields
     $('#payroll-form').trigger("reset");
   });
+
+  //Populating Day inside form it gives warning when doument write is used
+  for (let i = 1; i <= 31; i++) {
+    $('#day').append($('<option>', {
+      value: i,
+      text: i
+    }));
+  }
+
+  //pupulating year inside form 
+  const currentYear = new Date().getFullYear();
+  for (let y = currentYear; y >= 1980; y--) {
+    $('#year').append($('<option>', {
+      value: y,
+      text: y
+    }));
+  }
 });
 
 function validateFormDataJquery() {
@@ -173,6 +217,46 @@ function saveToJson(userData) {
     },
     error: function (error) {
       console.error("Error while adding data:", error);
+    }
+  });
+}
+
+
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+function prefillForm(user) {
+  $('#inputName').val(user.name);
+  $(`input[name="profileImageOptions"][value="${user.profileImage}"]`).prop('checked', true);
+  $(`input[name="genderRadioOptions"][value="${user.gender}"]`).prop('checked', true);
+  user.departments.forEach(dep => {
+    $(`input[name="departmentOptions"][value="${dep}"]`).prop('checked', true);
+  });
+  $('#salaryRange').val(user.salaryRange);
+  $('#day').val(user.day);
+  $('#month').val(user.month);
+  $('#year').val(user.year);
+  $('#Textarea1').val(user.notes);
+}
+
+
+function updateUser(userId, formData) {
+  console.log("reached inside update user and userId = ", userId);
+
+  $.ajax({
+    url: `http://localhost:3000/employees/${userId}`,
+    type: 'PUT',
+    contentType: 'application/json',
+    data: JSON.stringify(formData),
+    success: function () {
+      $('#payroll-form button[type="submit"]').text("Submit").addClass("btn btn-secondary px-5 me-5");
+      alert("User updated successfully!");
+      goToHomePage();
+    },
+    error: function () {
+      alert("Error updating user.");
     }
   });
 }

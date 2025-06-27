@@ -126,13 +126,11 @@ function getStoredUsers() {
 
 
 function displayUsers(storedUsers) {
-  console.log("stored User = ", storedUsers);
   if (storedUsers.length === 0) return null;
   storedUsers.forEach(user => listSingleUser(user));
 }
 
 function listSingleUser(user) {
-  console.log("display single user = ", user);
 
   //creating a table row for each entry
   let tableRow = $('<div>').addClass('table-row');
@@ -188,7 +186,6 @@ function listSingleUser(user) {
 
 $(document).on('click', '.delete-user', function () {
   var userId = $(this).attr('data-id');
-  console.log("userId=>", userId);
 
   if (confirm("Are you sure you want to delete this user?")) {
     $.ajax({
@@ -203,3 +200,13 @@ $(document).on('click', '.delete-user', function () {
     });
   }
 })
+
+$(document).on('click', '.edit-user', function () {
+  var userId = $(this).attr('data-id');
+  window.location.href = `payrollForm.html?id=${userId}`;
+})
+
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}

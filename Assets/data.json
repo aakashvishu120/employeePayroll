@@ -19,35 +19,66 @@
       "notes": "javascript is a synchronous single threaded language"
     },
     {
-      "id": "45e8",
-      "name": "jeff bezos",
-      "profileImage": "face1.jpg",
-      "gender": "male",
+      "name": "mark zukerberg",
+      "profileImage": "face2.jpg",
+      "gender": "female",
       "departments": [
-        "hr",
-        "sales"
+        "finance",
+        "engineers",
+        "others"
       ],
-      "salaryRange": "40000",
-      "day": "19",
-      "month": "12",
-      "year": "2008",
-      "notes": "this is sample text"
+      "salaryRange": "50000",
+      "day": "3",
+      "month": "1",
+      "year": "1998",
+      "notes": "I am the founder of Meta",
+      "id": "45e8"
     },
     {
-      "id": "1e6b",
-      "name": "anubhav",
-      "profileImage": "face1.jpg",
+      "name": "anubhav sharma",
+      "profileImage": "face3.jpg",
       "gender": "male",
       "departments": [
         "hr",
         "sales",
         "finance"
       ],
-      "salaryRange": "10000",
+      "salaryRange": "30000",
       "day": "21",
-      "month": "11",
-      "year": "2010",
-      "notes": "sample etxt"
+      "month": "12",
+      "year": "2025",
+      "notes": "sample Text",
+      "id": "1e6b"
+    },
+    {
+      "name": "Abhishek Panchal",
+      "profileImage": "face3.jpg",
+      "gender": "female",
+      "departments": [
+        "finance",
+        "engineers"
+      ],
+      "salaryRange": "30000",
+      "day": "2",
+      "month": "4",
+      "year": "1990",
+      "notes": "I am a college student",
+      "id": "178e"
+    },
+    {
+      "name": "Seema Garg",
+      "profileImage": "face1.jpg",
+      "gender": "female",
+      "departments": [
+        "sales",
+        "engineers"
+      ],
+      "salaryRange": "50000",
+      "day": "8",
+      "month": "9",
+      "year": "2002",
+      "notes": "I am good in node",
+      "id": "26bd"
     }
   ]
 }
