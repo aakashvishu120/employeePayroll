@@ -28,8 +28,9 @@
     <div class="bg-body-secondary container-fluid">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center pt-3">
-                <h5 class="mb-3 fw-bold">Employee Details</h5>
+                <h5 class="mb-3 fw-bold d-none d-md-block">Employee Details</h5>
                 <div class="d-flex">
+
                     <div class="row" role="button" id="search-box-container">
                         <input type="text" id="search-box" placeholder="Search Name">
                     </div>
@@ -38,22 +39,28 @@
                     </div>
                     <button class="light-green-background white-text btn hover-btn-effect"
                         onclick="goToPayrollFormPage()">
-                        <i class="bi bi-plus-circle me-1 px-2"></i>Add User
+                        <i class="bi bi-plus-circle me-1 px-2"></i>
+                        <span class="d-none d-md-inline">Add User</span>
                     </button>
                 </div>
             </div>
 
             <div class="pt-3 pb-5">
-                <div class="table-header rounded-1">
-                    <div class="table-cell" style="flex: 2;">Name</div>
-                    <div class="table-cell">Gender</div>
-                    <div class="table-cell" style="flex: 2;">Department</div>
-                    <div class="table-cell">Salary</div>
-                    <div class="table-cell">Start Date</div>
-                    <div class="table-cell text-end">Actions</div>
+                <div
+                    class="d-none d-md-flex align-items-center py-2 border-bottom fs-6 border-bottom bg-custom-blue text-white fw-bold rounded-1">
+                    <div class="d-flex align-items-center px-2 py-1" style="flex: 2;">Name</div>
+                    <div class="d-flex align-items-center px-2 py-1" style="flex: 1;">Gender</div>
+                    <div class="d-flex align-items-center px-2 py-1" style="flex: 2;">Department</div>
+                    <div class="d-flex align-items-center px-2 py-1" style="flex: 1;">Salary</div>
+                    <div class="d-flex align-items-center px-2 py-1" style="flex: 1;">Start Date</div>
+                    <div class="d-flex align-items-center px-2 py-1 text-end" style="flex: 1;">Actions</div>
                 </div>
 
-                <div class="table-body">
+                <div class="table-body fs-6">
+
+
+
+                    <!-- sample css code  -->
                     <!-- <div class="table-row">
                         <div class="table-cell name" style="flex: 2;">
                             <img src="../Assets/face1.jpg" alt="Avatar" class="face">
@@ -80,9 +87,63 @@
                         </div>
                     </div> -->
 
+        
+                    <!-- sample non responsive bootstrap code  -->
+                    <!-- <div class="d-flex align-items-center p-2 border-bottom bg-white">
+                        <div class="d-flex align-items-center px-2 py-1" style="flex: 2;">
+                            <img src="../Assets/face3.jpg" alt="Avatar" class="object-fit-cover rounded-circle me-2"
+                                style="width: 40px; height: 40px;">
+                            <span>Google</span>
+                        </div>
+                        <div class="d-flex align-items-center px-2 py-1" style="flex: 1;">Male</div>
+                        <div class="d-flex align-items-center px-2 py-1 flex-wrap" style="flex: 2;">
+                            <span class="px-2 py-1 m-1 rounded-4 department-color">hr</span>
+                            <span class="px-2 py-1 m-1 rounded-4 department-color">sales</span>
+                            <span class="px-2 py-1 m-1 rounded-4 department-color">finance</span>
+                            <span class="px-2 py-1 m-1 rounded-4 department-color">engineers</span>
+                        </div>
+                        <div class="d-flex align-items-center px-2 py-1" style="flex: 1;">30000</div>
+                        <div class="d-flex align-items-center px-2 py-1" style="flex: 1;">21 Dec 2025</div>
+                        <div class="d-flex align-items-center px-2 py-1" style="flex: 1;">
+                            <i class="bi bi-trash text-danger fs-3 mx-2 delete-user" data-id="1e6b"></i>
+                            <i class="bi bi-pencil text-primary fs-3 mx-2 edit-user" data-id="1e6b"></i>
+                        </div>
+                    </div> -->
 
 
-
+                    <!-- sample responsive bootstrap code  -->
+                    <!-- <div class="d-md-flex align-items-center py-4 px-2 border border-dark border-md-bottom my-4 bg-white rounded-2 ">
+                        <div class="d-flex align-items-center px-2 py-1" style="flex: 2;">
+                            <strong class="d-md-none me-4 w-25">Name :</strong>
+                            <img src="../Assets/face3.jpg" alt="Avatar" class="object-fit-cover rounded-circle me-2"
+                                style="width: 40px; height: 40px;">
+                            <span>Google</span>
+                        </div>
+                        <div class="d-flex align-items-center px-2 py-1" style="flex: 1;">
+                            <strong class="d-md-none me-4 w-25">Gender :</strong>
+                            Male
+                        </div>
+                        <div class="d-flex align-items-center px-2 py-1 flex-wrap" style="flex: 2;">
+                            <strong class="d-md-none me-4 w-25">Department :</strong>
+                            <span class="px-2 py-1 m-1 rounded-4 department-color">hr</span>
+                            <span class="px-2 py-1 m-1 rounded-4 department-color">Sales</span>
+                            <span class="px-2 py-1 m-1 rounded-4 department-color">Finance</span>
+                            <span class="px-2 py-1 m-1 rounded-4 department-color">Engineers</span>
+                        </div>
+                        <div class="d-flex align-items-center px-2 py-1" style="flex: 1;">
+                            <strong class="d-md-none me-4 w-25">Salary :</strong>
+                            30000
+                        </div>
+                        <div class="d-flex align-items-center px-2 py-1" style="flex: 1;">
+                            <strong class="d-md-none me-4 w-25">Start Date :</strong>
+                            21 Dec 2025
+                        </div>
+                        <div class="d-flex align-items-center px-2 py-1" style="flex: 1;">
+                            <strong class="d-md-none me-4 w-25">Action :</strong>
+                            <i class="bi bi-trash text-danger fs-3 mx-md-2 delete-user" data-id="1e6b"></i>
+                            <i class="bi bi-pencil text-primary fs-3 mx-2 edit-user" data-id="1e6b"></i>
+                        </div>
+                    </div> -->
 
                 </div>
             </div>

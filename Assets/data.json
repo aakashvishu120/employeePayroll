@@ -95,20 +95,6 @@
       "notes": "computer science"
     },
     {
-      "id": "de40",
-      "name": "Aayushi",
-      "profileImage": "face1.jpg",
-      "gender": "female",
-      "departments": [
-        "others"
-      ],
-      "salaryRange": "20000",
-      "day": "18",
-      "month": "11",
-      "year": "2010",
-      "notes": "information technology"
-    },
-    {
       "id": "42f5",
       "name": "akshita trivedi",
       "profileImage": "face4.webp",
@@ -123,19 +109,22 @@
       "notes": "computer science"
     },
     {
-      "id": "794e",
-      "name": "akriti singh",
+      "name": "akriti verma",
       "profileImage": "face3.jpg",
       "gender": "female",
       "departments": [
+        "hr",
         "sales",
+        "finance",
+        "engineers",
         "others"
       ],
       "salaryRange": "10000",
       "day": "20",
       "month": "12",
       "year": "2005",
-      "notes": "infomation technology"
+      "notes": "infomation technology",
+      "id": "794e"
     }
   ]
 }

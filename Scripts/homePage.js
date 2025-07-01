@@ -16,7 +16,7 @@ function goToPayrollFormPage() {
 // function displayUsers(user) {
 //     const tableBody = document.querySelector(".table-body");
 //     const tableRow = document.createElement('div');
-//     tableRow.classList.add('table-row');
+//     tableRow.classList.add('table-row', 'table-cell');
 
 //     //creating parent div for name and img tag
 //     const nameImg = document.createElement('div');
@@ -134,7 +134,7 @@ $(document).ready(function () {
     window.location.href = `payrollForm.html?id=${userId}`;
   })
 
-
+  //search user
   $('#search-box').on('input', function () {
     const query = $(this).val().trim().toLowerCase();
     $('.table-row').each(function () {
@@ -147,7 +147,7 @@ $(document).ready(function () {
     });
   });
 
-
+  //hide/unhide search button
   $("#search-button").on('click', function () {
     $("#search-box-container").toggle(1000, "swing");
   })
@@ -177,31 +177,39 @@ function displayUsers(storedUsers) {
 
 function listSingleUser(user) {
   //creating a table row for each entry
-  let tableRow = $('<div>').addClass('table-row');
+  let tableRow = $('<div>').addClass('d-md-flex align-items-center py-sm-4 py-md-1 px-2 border border-md-white border-sm-dark my-4 my-md-0 bg-white rounded-2');
 
   //parent div of name+img 
-  let nameImg = $('<div>').addClass('table-cell name');
+  let nameImg = $('<div>').addClass('table-cell name d-flex align-items-center px-2 py-2').css('flex', '2');
+
+  let nameLabel = $('<strong>').addClass('d-md-none me-4 w-25').text('Name :');
 
   //creating an image tag
   let img = $('<img>').attr({
     src: `../Assets/${user.profileImage}`,
     alt: 'Avatar',
-  }).addClass('face');
-  nameImg.append(img);
+  }).addClass('object-fit-cover rounded-circle me-2')
+  .css({ width:'40px',height:'40px',borderRadius: '50%',marginRight: '10px' });
+  // nameImg.append(img);
 
   //creating an span tag for name
   var finalName = user.name[0].toUpperCase() + user.name.slice(1);
   let span = $('<span>').text(finalName);
-  nameImg.append(span);
+  nameImg.append(nameLabel, img, span);
   tableRow.append(nameImg);
 
   //creating a div for gender
   var finalGender = user.gender[0].toUpperCase() + user.gender.slice(1);
-  let gender = $('<div>').addClass('table-cell').text(finalGender);
+  let genderLabel = $('<strong>').addClass('d-md-none me-4 w-25').text('Gender :');
+  let gender = $('<div>').addClass('d-flex align-items-center px-2 py-1').css('flex', '1');
+  gender.append(genderLabel);
+  gender.append($('<span>').text(finalGender));
   tableRow.append(gender);
 
   //creating a div for department
-  let department = $('<div>').addClass('table-cell department-cell');
+  let department = $('<div>').addClass('d-flex align-items-center px-2 py-1 flex-wrap w-35').css('flex', '2');
+  let departmentLabel = $('<strong>').addClass('d-md-none me-4 w-25').text('Department :');
+  department.append(departmentLabel);
   user.departments.forEach(item => {
     let span = $('<span>').addClass('px-2 py-1 m-1 rounded-4 department-color').text(item);
     department.append(span);
@@ -209,16 +217,24 @@ function listSingleUser(user) {
   tableRow.append(department);
 
   //creating a div for salary
-  let salary = $('<div>').addClass('table-cell').text(user.salaryRange);
+  let salary = $('<div>').addClass('d-flex align-items-center px-2 py-1').css('flex', '1');
+  let salaryLabel = $('<strong>').addClass('d-md-none me-4 w-25').text('Salary :');
+  salary.append(salaryLabel);
+  salary.append($('<span>').text(user.salaryRange));
   tableRow.append(salary);
 
   //creating a div for startDate
   const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
-  let startDate = $('<div>').addClass('table-cell').text(`${user.day} ${months[user.month - 1]} ${user.year}`);
+  let startDate = $('<div>').addClass('table-cell d-flex align-items-center px-2 py-2').css('flex', '1');
+  let startDateLabel = $('<strong>').addClass('d-md-none me-4 w-25').text('Start Date :');
+  startDate.append(startDateLabel);
+  startDate.append($('<span>').text(`${user.day} ${months[user.month - 1]} ${user.year}`));
   tableRow.append(startDate);
 
-  let editdelbuttons = $('<div>').addClass('table-cell text-end action-icons');
-  let deletebtn = $('<i>').addClass('bi bi-trash text-danger fs-3 mx-2 delete-user').attr('data-id', user.id);
+  let editdelbuttons = $('<div>').addClass('d-flex align-items-center px-2 py-1 action-icons').css('flex', '1');
+  let actionLabel = $('<strong>').addClass('d-md-none me-4 w-25').text('Action :');
+  editdelbuttons.append(actionLabel);
+  let deletebtn = $('<i>').addClass('bi bi-trash text-danger fs-3 mx-md-2 delete-user').attr('data-id', user.id);
   let editbtn = $('<i>').addClass('bi bi-pencil text-primary fs-3 mx-2 edit-user').attr('data-id', user.id);
   editdelbuttons.append(deletebtn);
   editdelbuttons.append(editbtn);
